@@ -1,16 +1,23 @@
 const fs = require('fs')
+const util = require('util')
+
+
+// var novaFuncaoComPromise = util.promisify(funcaoVelhaComCallback)
 
 class Reader {
 
-    Read(filepath) {
-        fs.readFile(filepath, "utf-8", (err, data) => {
-            if (err) {
-                console.log(err)
+    constructor() {
+        this.reader = util.promisify(fs.readFile)
+    }
+    async Read(filepath) {
 
-            } else {
-                console.log(data)
-            }
-        })
+        try {
+            return await this.reader(filepath, 'utf8')
+
+        } catch (error) {
+            return undefined
+        }
+
     }
 }
 
