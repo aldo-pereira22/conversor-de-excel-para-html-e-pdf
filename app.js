@@ -12,7 +12,11 @@ async function main() {
 
     var usuarios = new Table(dadosProcessados)
 
-    console.log(usuarios.rows)
+    usuarios.rows.push("João da Silva", "Direito", "DIREITO", "3")
+
+    console.log(usuarios.rowCount)
+    console.log(usuarios.columnCount)
+
 }
 
 main()
