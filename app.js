@@ -1,9 +1,11 @@
 var Reader = require('./Reader')
+var Writer = require('./Writer')
 var Processor = require('./Processor')
 var HtmlParser = require('./HtmlParser')
 var Table = require('./Table')
 
 var leitor = new Reader()
+var escritor = new Writer()
 
 
 async function main() {
@@ -15,12 +17,13 @@ async function main() {
 
     usuarios.rows.push("João da Silva", "Direito", "DIREITO", "3")
 
-    console.log(usuarios.rowCount)
-    console.log(usuarios.columnCount)
+    // console.log(usuarios.rowCount)
+    // console.log(usuarios.columnCount)
 
     var html = await HtmlParser.Parse(usuarios)
 
-    console.log(html)
+    // console.log(html)
+    escritor.Write(Date.now() + ".html", html)
 }
 
 main()
